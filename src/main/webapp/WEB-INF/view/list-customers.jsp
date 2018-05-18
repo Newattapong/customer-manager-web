@@ -4,8 +4,10 @@
 <head>
 
 <title> List Customer </title>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
+ 
  
  		<div id="wrapper">
  			<div id="header">
