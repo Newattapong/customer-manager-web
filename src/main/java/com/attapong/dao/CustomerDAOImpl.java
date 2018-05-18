@@ -18,7 +18,6 @@ public class CustomerDAOImpl implements CustomerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	@Transactional
 	public List<Customer> getCustomers() {
 		
 		Session session = sessionFactory.getCurrentSession();
