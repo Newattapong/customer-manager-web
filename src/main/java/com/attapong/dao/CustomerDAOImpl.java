@@ -44,4 +44,32 @@ public class CustomerDAOImpl implements CustomerDao {
 		return customer;
 	}
 
+	public void deleteCustomer(int id) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Query query = session.createQuery("delete from Customer where id=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
+	}
+
+	public List<Customer> searchCustomer(String name) {
+
+		Session session = sessionFactory.getCurrentSession();
+		Query query = null;
+		if (name != null && name.trim().length() > 0) {
+			
+			System.out.println("name not null");
+			 query = session.createQuery(
+					"from Customer where lower(firstName) like :name or lower(lastName) like :name", Customer.class);
+			 
+			query.setParameter("name", "%" + name.toLowerCase() + "%");
+		}else {
+			 query = session.createQuery(
+						"from Customer", Customer.class);
+		}
+		List<Customer> customers = query.getResultList();
+		
+		return customers;
+	}
+
 }
